@@ -38,9 +38,6 @@
     <ClCompile Include="aStar.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>

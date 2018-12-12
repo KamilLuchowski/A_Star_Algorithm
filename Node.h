@@ -11,5 +11,9 @@ public:
 	int getX();
 	int getY();
 	int getNr();
+
+	void setX(int _mx);
+	void setY(int m_y);
+	void setNr(int m_nr);
 };
 

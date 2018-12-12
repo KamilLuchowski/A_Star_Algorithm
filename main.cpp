@@ -2,11 +2,15 @@
 //
 
 #include "pch.h"
+#include "Graph.h"
+#include "File.h"
 #include <iostream>
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	File f;
+	f.loadData();
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
