@@ -7,23 +7,27 @@ template <class Type>
 class Graph
 {
 private:
-	std::vector <Type> nodes;
-	std::map <Type, std::vector <Type, int> > edges; 
-
+	std::vector<Type>nodes;
+	std::vector<std::vector<int> > connections;
 
 public:
 	Graph();
 	~Graph();
-	void getNodes(std::vector<Type>vec);
+	void copyFromFile(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections);
 };
 
 template<class Type>
 Graph<Type>::Graph() {
-	Type t;
-	t.value();
+
 }
 
 template<class Type>
-void Graph<Type>::getNodes(std::vector<Type>vec) {
+inline Graph<Type>::~Graph()
+{
+}
 
+template<class Type>
+void Graph<Type>::copyFromFile(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections) {
+	nodes = m_nodes;
+	connections = m_connections;
 }

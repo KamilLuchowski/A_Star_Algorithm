@@ -53,3 +53,13 @@ void File::loadData()
 
 	std::cout << connections[7][0] << std::endl;
 }
+
+std::vector<Node> File::getNodes()
+{
+	return nodes;
+}
+
+std::vector<std::vector<int>> File::getConnections()
+{
+	return connections;
+}

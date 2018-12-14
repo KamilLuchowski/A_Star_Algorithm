@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include "Graph.h"
+#include "Node.h"
 #include "File.h"
 #include <iostream>
 
@@ -11,6 +12,9 @@ int main()
     std::cout << "Hello World!\n"; 
 	File f;
 	f.loadData();
+
+	Graph<Node> graph;
+	graph.copyFromFile(f.getNodes(), f.getConnections());
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania

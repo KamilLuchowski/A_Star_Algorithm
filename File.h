@@ -14,6 +14,7 @@ public:
 	File();
 	~File();
 	void loadData();
-
+	std::vector<Node>getNodes();
+	std::vector<std::vector<int> >getConnections();
 };
 
