@@ -9,6 +9,8 @@ private:
 	std::fstream file;
 	std::vector<Node>nodes;
 	std::vector<std::vector<int> > connections;
+	int edgesAmount;
+	int NodesAmount;
 
 public:
 	File();
@@ -16,5 +18,7 @@ public:
 	void loadData();
 	std::vector<Node>getNodes();
 	std::vector<std::vector<int> >getConnections();
+	int getNodesAmount();
+	int getEdgesAmount();
 };
 

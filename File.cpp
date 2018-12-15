@@ -14,8 +14,7 @@ File::~File()
 void File::loadData()
 {
 	file.open("graph.dat");
-	int NodesAmount, nr, x, y;
-	int edgesAmount;
+	int nr, x, y;
 
 	if (!file.good()) {
 		exit(1);
@@ -62,4 +61,14 @@ std::vector<Node> File::getNodes()
 std::vector<std::vector<int>> File::getConnections()
 {
 	return connections;
+}
+
+int File::getNodesAmount()
+{
+	return NodesAmount;
+}
+
+int File::getEdgesAmount()
+{
+	return edgesAmount;
 }

@@ -1,11 +1,13 @@
 #pragma once
 #include <vector>
+#include "Graph.h"
 
 class aStar
 {
 private:
-	int n;
-	//std::vector<int>openedNodes(10, 0);
+	Graph<Node> g;
+	std::vector<int> previousNode;
+	std::vector<double> wayValue;
 
 public:
 	aStar();

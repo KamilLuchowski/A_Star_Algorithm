@@ -14,7 +14,8 @@ int main()
 	f.loadData();
 
 	Graph<Node> graph;
-	graph.copyFromFile(f.getNodes(), f.getConnections());
+	graph.copyFromFile(f.getNodes(), f.getConnections(), f.getNodesAmount(), f.getEdgesAmount());
+	graph.printGraph();
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
