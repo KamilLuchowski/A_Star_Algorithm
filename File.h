@@ -19,6 +19,5 @@ public:
 	std::vector<Node>getNodes();
 	std::vector<std::vector<int> >getConnections();
 	int getNodesAmount();
-	int getEdgesAmount();
 };
 

@@ -7,18 +7,18 @@ template <class Type>
 class Graph
 {
 private:
-	std::vector<Type>nodes;
-	std::vector<std::vector<int> > connections;
+	std::vector<Type>nodes; //vector stores nodes
+	std::vector<std::vector<int> > connections; //vector stores vectors of direct connections of each node
 	int nodesAmount;
-	int edgesAmount;
 
 public:
 	Graph();
 	~Graph();
-	void copyFromFile(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr, int edgesNr);
-	std::vector<int> getDirectConnections(int node);
-	void printGraph();
-	double nodeDistance(int a, int b);
+	void setGraph(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr); //
+	std::vector<int> getDirectConnections(int node); //returns a vector to n-node direct connections
+	void printGraph(); //TO DELETE??
+	double nodeDistance(int a, int b); //return a distance between node nr a and node nr b
+	int getNodesAmount();
 };
 
 template<class Type>
@@ -32,11 +32,10 @@ inline Graph<Type>::~Graph()
 }
 
 template<class Type>
-void Graph<Type>::copyFromFile(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr, int edgesNr) {
+void Graph<Type>::setGraph(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr) {
 	nodes = m_nodes;
 	connections = m_connections;
 	nodesAmount = nodesNr;
-	edgesAmount = edgesNr;
 }
 
 template<class Type>
@@ -63,8 +62,13 @@ inline double Graph<Type>::nodeDistance(int a, int b)
 	Type A, B;
 	A = nodes[a];
 	B = nodes[b];
-	//printf("Wartosc %\n", val);
 	double val = sqrt((B.getX()-A.getX())*(B.getX() - A.getX()) + (B.getY() - A.getY())*(B.getY() - A.getY()));
-	printf("Dystans %f\n", val);
+	//printf("Dystans %f\n", val);
 	return val;
+}
+
+template<class Type>
+inline int Graph<Type>::getNodesAmount()
+{
+	return nodesAmount;
 }

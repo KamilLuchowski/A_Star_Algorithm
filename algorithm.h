@@ -5,14 +5,14 @@ class Algorithm
 {
 private:
 	Graph<Node> g;
-	std::vector<int> *previousNode;
-	std::vector<double> *wayValue;
-	int start;
-	int end;
+	std::vector<int> *previousNode; //pointer to vector storing the way from start to end
+	std::vector<double> *wayValue; //pointer to vector storing the shortest length from start to a node
+	int start; //start node nr
+	int end; //end node nr
 public:
 	Algorithm();
 	~Algorithm();
-	void setAlgorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *m_previousNode, std::vector<double> *m_wayValue);
+	Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *m_previousNode, std::vector<double> *m_wayValue);
 	void aStar();
 	void Dijkstra();
 };

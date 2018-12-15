@@ -2,8 +2,8 @@
 class Node
 {
 private:
-	int nr;
-	int x;
+	int nr; //each node has its own number
+	int x; //coordinates of the point
 	int y;
 public:
 	Node();

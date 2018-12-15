@@ -12,19 +12,24 @@ Algorithm::~Algorithm()
 {
 }
 
-void Algorithm::setAlgorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *m_previousNode, std::vector<double> *m_wayValue)
+Algorithm::Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *m_previousNode, std::vector<double> *m_wayValue)
 {
+	previousNode = NULL;
+	wayValue = NULL;
 	start = m_start;
 	end = m_end;
 	g = m_g;
 	previousNode = m_previousNode;
 	wayValue = m_wayValue;
+	wayValue->assign(g.getNodesAmount(), DBL_MAX); //making vector with nodesAmount positions, all values set as DBL_MAX
+
+	/*
 	std::cout << "Start "<<start <<std::endl;
 	std::cout << "End " << end << std::endl;
-	std::cout << "Random wayValue " <<wayValue->at(2) << std::endl;
-	std::cout << "Random wayValue " << wayValue->at(3) << std::endl;
-	std::cout << "Random wayValue " << wayValue->at(4) << std::endl;
-
+	std::cout << "Random wayValue " <<wayValue->at(0) << std::endl;
+	std::cout << "Random wayValue " << wayValue->at(1) << std::endl;
+	std::cout << "Random wayValue " << wayValue->at(9) << std::endl;
+	*/
 
 }
 
