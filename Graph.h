@@ -18,6 +18,7 @@ public:
 	void copyFromFile(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr, int edgesNr);
 	std::vector<int> getDirectConnections(int node);
 	void printGraph();
+	double nodeDistance(int a, int b);
 };
 
 template<class Type>
@@ -54,4 +55,16 @@ inline void Graph<Type>::printGraph()
 	for (int next: getDirectConnections(3)) {
 		std::cout << next << std::endl;
 	}
+}
+
+template<class Type>
+inline double Graph<Type>::nodeDistance(int a, int b)
+{
+	Type A, B;
+	A = nodes[a];
+	B = nodes[b];
+	//printf("Wartosc %\n", val);
+	double val = sqrt((B.getX()-A.getX())*(B.getX() - A.getX()) + (B.getY() - A.getY())*(B.getY() - A.getY()));
+	printf("Dystans %f\n", val);
+	return val;
 }

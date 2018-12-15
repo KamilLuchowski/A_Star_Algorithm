@@ -151,16 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="algorithm.h" />
-    <ClInclude Include="aStar.h" />
+    <ClInclude Include="Algorithm.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="algorithm.cpp" />
-    <ClCompile Include="aStar.cpp" />
+    <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="pch.cpp">

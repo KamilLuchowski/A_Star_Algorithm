@@ -1,16 +1,14 @@
 #pragma once
 #include <vector>
 #include "Graph.h"
+#include "Algorithm.h"
 
-class aStar
+class aStar : public Algorithm
 {
-private:
-	Graph<Node> g;
-	std::vector<int> previousNode;
-	std::vector<double> wayValue;
 
 public:
 	aStar();
 	~aStar();
+	virtual void algorithm();
 };
 
