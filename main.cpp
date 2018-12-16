@@ -15,10 +15,8 @@ int main()
 
 	File f;
 	f.loadData();
-
 	Graph<Node> graph;
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
-	//graph.printGraph();
 
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
@@ -40,19 +38,10 @@ int main()
 
 	std::vector<int> *A_vec;
 	A_vec = a.buildTheWay(start, end);
-	std::reverse(A_vec->begin(), A_vec->end());
-
-	for (int i = 0; i < A_vec->size(); i++)
-		std::cout << A_vec->at(i) << std::endl;
 
 	std::vector<int> *B_vec;
 	B_vec = b.buildTheWay(start, end);
-	std::reverse(B_vec->begin(), B_vec->end());
 
-	for (int i = 0; i < B_vec->size(); i++)
-		std::cout << B_vec->at(i) << std::endl;
-
-
-
+	f.saveData(a.getWayLength(), b.getWayLength(), A_vec, B_vec);
 }
 

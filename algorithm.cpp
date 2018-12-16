@@ -24,15 +24,6 @@ Algorithm::Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *
 	wayValue = m_wayValue;
 	wayValue->assign(g.getNodesAmount(), DBL_MAX); //making vector with nodesAmount positions, all values set as DBL_MAX
 	previousNode->assign(g.getNodesAmount(), INT_MAX);
-
-	/*
-	std::cout << "Start "<<start <<std::endl;
-	std::cout << "End " << end << std::endl;
-	std::cout << "Random wayValue " <<wayValue->at(0) << std::endl;
-	std::cout << "Random wayValue " << wayValue->at(1) << std::endl;
-	std::cout << "Random wayValue " << wayValue->at(9) << std::endl;
-	*/
-
 }
 
 void Algorithm::aStar() //make a priority_queue
@@ -43,10 +34,11 @@ void Algorithm::aStar() //make a priority_queue
 
 	previousNode->at(start) = start; //set initial values
 	wayValue->at(start) = 0;
+	int currentNode;
 
 	while (!p_queue.empty()) {
 
-		int currentNode = p_queue.top().second;//take a node from the queue and set it as current
+		currentNode = p_queue.top().second;//take a node from the queue and set it as current
 		p_queue.pop(); //take a node with the lowest (current way + predicted way)
 
 		if (currentNode == end) {
@@ -58,8 +50,6 @@ void Algorithm::aStar() //make a priority_queue
 
 			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal; 
-				//if(next==8)
-					//std::cout << "ASTAR Co tu sie dzieje z wayValue dla 8? : " << wayValue->at(8) << std::endl;
 
 				double toQueue = newVal + g.nodeDistance(next, end); //newValue + heuristic
 				//g.nodeDistance(next, end) - heuristic function
@@ -68,6 +58,8 @@ void Algorithm::aStar() //make a priority_queue
 			}
 		}
 	}
+	if (currentNode != end) //no connection
+		exit(1);
 }
 
 void Algorithm::Dijkstra()
@@ -78,10 +70,11 @@ void Algorithm::Dijkstra()
 
 	previousNode->at(start) = start; //set initial values
 	wayValue->at(start) = 0;
+	int currentNode;
 
 	while (!p_queue.empty()) {
 
-		int currentNode = p_queue.top().second;//take a node from the queue and set it as current
+		currentNode = p_queue.top().second;//take a node from the queue and set it as current
 		p_queue.pop(); //take a node with the lowest (current way + predicted way)
 
 		if (currentNode == end) {
@@ -93,26 +86,31 @@ void Algorithm::Dijkstra()
 
 			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal;
-					//std::cout << "Co tu sie dzieje z wayValue dla 8? : " << wayValue->at(8) << std::endl;
 				p_queue.emplace(newVal, next);//put newVal, next, to priority_queue
 				previousNode->at(next) = currentNode; //save current node as "the best predecessor" on the way to the "next" node
 			}
 		}
 	}
-	//std::cout << "Co tu sie dzieje z wayValue dla 8? : " << wayValue->at(8) << std::endl;
-
+	if (currentNode != end) //no connection
+		exit(1);
 }
 
 std::vector<int>* Algorithm::buildTheWay(int start, int end)
 {
 	int currentNode=end;
-	vec.push_back(end);
+	inOrderWay.push_back(end);
 	while (!(currentNode == start)) {
 		
-		vec.push_back(previousNode->at(currentNode));
+		inOrderWay.push_back(previousNode->at(currentNode));
 		currentNode = previousNode->at(currentNode);
 	}
-	
-	return &vec;
+	std::reverse(inOrderWay.begin(), inOrderWay.end());
 
+	return &inOrderWay;
+
+}
+
+double Algorithm::getWayLength()
+{
+	return wayValue->at(end);
 }

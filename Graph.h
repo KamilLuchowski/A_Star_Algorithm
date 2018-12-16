@@ -45,7 +45,7 @@ inline std::vector<int> Graph<Type>::getDirectConnections(int node)
 }
 
 template<class Type>
-inline void Graph<Type>::printGraph()
+inline void Graph<Type>::printGraph() //to delete??
 {
 	for (Type next : nodes) {
 		std::cout << next.getNr() << std::endl;
@@ -63,7 +63,6 @@ inline double Graph<Type>::nodeDistance(int a, int b)
 	A = nodes[a];
 	B = nodes[b];
 	double val = sqrt((B.getX()-A.getX())*(B.getX() - A.getX()) + (B.getY() - A.getY())*(B.getY() - A.getY()));
-	//printf("Dystans %f\n", val);
 	return val;
 }
 

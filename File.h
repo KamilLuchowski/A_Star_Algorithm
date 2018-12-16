@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Node.h"
 #include <vector>
+#include <conio.h>
 class File
 {
 private:
@@ -16,6 +17,7 @@ public:
 	File();
 	~File();
 	void loadData();
+	void saveData(double length, double length2, std::vector<int> *vec, std::vector<int> *vec2);
 	std::vector<Node>getNodes();
 	std::vector<std::vector<int> >getConnections();
 	int getNodesAmount();
