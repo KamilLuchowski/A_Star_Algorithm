@@ -38,19 +38,18 @@ void File::loadData()
 	for (int i = 0; i < NodesAmount; i++) {
 		file >> edgesAmount; //the first number of a file line inform how many connections has this node
 		//std::cout << "Liczba krawedzi z "<<i <<"-tego wierzcholka: " << edgesAmount << std::endl;
-		std::vector<int> vec;
+		std::vector<int> vec; //vector of direct connections
 		for (int i = 0; i < edgesAmount; i++) {
 			file >> nr;
 			vec.push_back(nr);
 			//std::cout << "Konkretna krawedz: " << nr << std::endl;
 		}
-		connections.push_back(vec);
+		connections.push_back(vec); //adding direct connections vector to the connections vector
 	}
 
 	file.close();
 
-
-	std::cout << connections[7][0] << std::endl;
+	//std::cout << connections[7][0] << std::endl;
 }
 
 std::vector<Node> File::getNodes()

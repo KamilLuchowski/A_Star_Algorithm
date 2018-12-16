@@ -37,7 +37,7 @@ void Algorithm::aStar() //make a priority_queue
 {
 	//add the start node to queue
 
-	previousNode->at(start) = start;
+	previousNode->at(start) = start; //
 	wayValue->at(start) = 0;
 
 	//while (if there is any nodes in queue) {
@@ -47,13 +47,13 @@ void Algorithm::aStar() //make a priority_queue
 			//found, leave this method;
 		}
 
-		for (int next : g.getDirectConnections(current)) {
-			double newVal = wayValue->at(current) + g.nodeDistance(current, next);
+		for (int next : g.getDirectConnections(current)) { //next is a number of every node that is in direct connection to the current node
+			double newVal = wayValue->at(current) + g.nodeDistance(current, next); //newVal = the shortest length to the current node + length form current node to the next node
 
-			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) {
+			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal;
 
-				double toQueue = newVal + g.nodeDistance(next, end);
+				double toQueue = newVal + g.nodeDistance(next, end); 
 				//put next, toQueue  to priority_queue
 				previousNode->at(next) = current;
 			}
