@@ -58,6 +58,8 @@ void Algorithm::aStar() //make a priority_queue
 
 			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal; 
+				//if(next==8)
+					//std::cout << "ASTAR Co tu sie dzieje z wayValue dla 8? : " << wayValue->at(8) << std::endl;
 
 				double toQueue = newVal + g.nodeDistance(next, end); //newValue + heuristic
 				//g.nodeDistance(next, end) - heuristic function
@@ -91,10 +93,26 @@ void Algorithm::Dijkstra()
 
 			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal;
-
+					//std::cout << "Co tu sie dzieje z wayValue dla 8? : " << wayValue->at(8) << std::endl;
 				p_queue.emplace(newVal, next);//put newVal, next, to priority_queue
 				previousNode->at(next) = currentNode; //save current node as "the best predecessor" on the way to the "next" node
 			}
 		}
 	}
+	//std::cout << "Co tu sie dzieje z wayValue dla 8? : " << wayValue->at(8) << std::endl;
+
+}
+
+std::vector<int>* Algorithm::buildTheWay(int start, int end)
+{
+	int currentNode=end;
+	vec.push_back(end);
+	while (!(currentNode == start)) {
+		
+		vec.push_back(previousNode->at(currentNode));
+		currentNode = previousNode->at(currentNode);
+	}
+	
+	return &vec;
+
 }

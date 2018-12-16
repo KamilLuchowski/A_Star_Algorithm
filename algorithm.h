@@ -10,10 +10,12 @@ private:
 	int start; //start node nr
 	int end; //end node nr
 	typedef std::pair<double, int> QueueValue; //two values, double is the value of the way, int is a number of a node
+	std::vector<int> vec;
 public:
 	Algorithm();
 	~Algorithm();
 	Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *m_previousNode, std::vector<double> *m_wayValue);
 	void aStar();
 	void Dijkstra();
+	std::vector<int>* buildTheWay(int start, int end);
 };
