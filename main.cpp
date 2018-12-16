@@ -1,9 +1,10 @@
-﻿#include "pch.h"
+﻿#include <iostream>
+#include "pch.h"
 #include "Graph.h"
 #include "Node.h"
 #include "File.h"
 #include "Algorithm.h"
-#include <iostream>
+
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
 	f.loadData();
 	Graph<Node> graph;
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
+	graph.printGraph();
 
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
@@ -28,20 +30,8 @@ int main()
 	Algorithm b(start, end, graph, &B_previousNode, &B_wayValue);
 	b.Dijkstra();
 
-	std::cout<<std::endl;
-	for (int i = 0; i < 10; i++)
-		std::cout <<i<<". " <<A_previousNode[i] <<"  " <<A_wayValue[i]<< std::endl;
-
-	std::cout << std::endl;
-	for (int i = 0; i < 10; i++)
-		std::cout << i << ". " << B_previousNode[i] << "  " << B_wayValue[i] << std::endl;
-
-	std::vector<int> *A_vec;
-	A_vec = a.buildTheWay(start, end);
-
-	std::vector<int> *B_vec;
-	B_vec = b.buildTheWay(start, end);
-
-	f.saveData(a.getWayLength(), b.getWayLength(), A_vec, B_vec);
+	std::vector<int> *A_vec = a.buildTheWay(start, end);
+	std::vector<int> *B_vec = b.buildTheWay(start, end);
+	f.saveData(a.getWayLength(), b.getWayLength(), A_vec, B_vec, &A_previousNode, &A_wayValue, &B_previousNode, &B_wayValue);
 }
 

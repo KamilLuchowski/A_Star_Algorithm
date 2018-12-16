@@ -46,31 +46,43 @@ void File::loadData()
 	file.close();
 }
 
-void File::saveData(double length, double length2, std::vector<int> *vec, std::vector<int> *vec2)
+void File::saveData(double length, double length2, std::vector<int> *vec, std::vector<int> *vec2, std::vector<int>* A_previousNode, std::vector<double>* A_wayValue, std::vector<int>* B_previousNode, std::vector<double>* B_wayValue)
 {
-	//file.open("out.dat"); //name of a graph file set here
-	file.open("out.dat", std::ios::out | std::ios::trunc);
+	file.open("out.dat", std::ios::out | std::ios::trunc); //name of a graph file set here
 	file.clear();
 
 	if (!file.good()) {
 		exit(2);
 	}
 
-	file << "Dijkstra algorithm results: "<<std::endl;
+	file << "AStar algorithm results: "<<std::endl;
 	for (int i = 0; i < vec->size(); i++)
 		file << vec->at(i) << " ";
 	file << "Length: " << length;
 	file << std::endl;
 
-	file << "AStar algorithm results: " << std::endl;
+	for (int i = 0; i < 10; i++) {
+		if (A_previousNode->at(i) == INT_MAX)
+			file << i << ". " << "NOT VISITED" << std::endl;
+		else
+			file << i << ". " << A_previousNode->at(i) << "  " << A_wayValue->at(i) << std::endl;
+	}
+
+	file << std::endl;
+	file << "Dijkstra algorithm results: " << std::endl;
 	for (int i = 0; i < vec2->size(); i++)
 		file << vec2->at(i) << " ";
 	file << "Length: " << length2;
 	file << std::endl;
 
+	for (int i = 0; i < 10; i++) {
+		if (B_previousNode->at(i) == INT_MAX)
+			file << i << ". " << "NOT VISITED" << std::endl;
+		else
+			file << i << ". " << B_previousNode->at(i) << "  " << B_wayValue->at(i) << std::endl;
+	}
 
 	file.close();
-
 }
 
 std::vector<Node> File::getNodes()
