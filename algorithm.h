@@ -9,7 +9,7 @@ private:
 	std::vector<double> *wayValue; //pointer to vector storing the shortest length from start to a node
 	int start; //start node nr
 	int end; //end node nr
-	typedef std::pair<double, int> QueueValue;
+	typedef std::pair<double, int> QueueValue; //two values, double is the value of the way, int is a number of a node
 public:
 	Algorithm();
 	~Algorithm();
