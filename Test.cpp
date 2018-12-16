@@ -17,7 +17,7 @@ void Test::testAll()
 	f.loadData();
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
 
-	graph.printGraph();
+	printGraph();
 
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
@@ -44,4 +44,16 @@ void Test::testAll()
 		std::cout << next << " ";
 	std::cout << std::endl;
 
+}
+
+void Test::printGraph()
+{
+	for (Node next : *graph.getNodes()) {
+		std::cout << next.getNr() << " - ";
+		for (int next1 : graph.getDirectConnections(next.getNr())) {
+			std::cout << next1 << " ";
+		}
+		std::cout << std::endl;
+	}
+	
 }

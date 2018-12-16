@@ -16,9 +16,9 @@ public:
 	~Graph();
 	void setGraph(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr); //
 	std::vector<int> getDirectConnections(int node); //returns a vector to n-node direct connections
-	void printGraph(); //TO DELETE??
 	double nodeDistance(int a, int b); //return a distance between node nr a and node nr b
 	int getNodesAmount();
+	std::vector<Type>*getNodes();
 };
 
 template<class Type>
@@ -45,19 +45,6 @@ inline std::vector<int> Graph<Type>::getDirectConnections(int node)
 }
 
 template<class Type>
-inline void Graph<Type>::printGraph() //to delete??
-{
-	for (Type next : nodes) {
-		std::cout << next.getNr() <<" - ";
-		for (int next1 : getDirectConnections(next.getNr())) {
-			std::cout << next1 << " ";
-		}
-		std::cout << std::endl;
-	}
-
-}
-
-template<class Type>
 inline double Graph<Type>::nodeDistance(int a, int b)
 {
 	Type A, B;
@@ -71,4 +58,10 @@ template<class Type>
 inline int Graph<Type>::getNodesAmount()
 {
 	return nodesAmount;
+}
+
+template<class Type>
+inline std::vector<Type>* Graph<Type>::getNodes()
+{
+	return &nodes;
 }

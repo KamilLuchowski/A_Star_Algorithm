@@ -1,2 +1,8 @@
-﻿  Test.cpp
+﻿  Algorithm.cpp
+  File.cpp
+c:\users\kamil\desktop\proi_two\file.cpp(59): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+c:\users\kamil\desktop\proi_two\file.cpp(73): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+  Test.cpp
+  main.cpp
+  Generowanie kodu...
   PROI_TWO.vcxproj -> C:\Users\Kamil\Desktop\PROI_TWO\Debug\PROI_TWO.exe

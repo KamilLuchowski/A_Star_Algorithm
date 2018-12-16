@@ -2,6 +2,9 @@
 #include "Algorithm.h"
 #include "Graph.h"
 #include "File.h"
+#include "Node.h"
+#include <iostream>
+#include <fstream>
 class Test
 {
 private:
@@ -12,5 +15,6 @@ public:
 	Test();
 	~Test();
 	void testAll();
+	void printGraph();
 };
 

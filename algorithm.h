@@ -17,6 +17,6 @@ public:
 	Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *m_previousNode, std::vector<double> *m_wayValue);
 	void aStar();
 	void Dijkstra();
-	std::vector<int>* buildTheWay(int start, int end);
-	double getWayLength();
+	std::vector<int>* buildTheWay(int start, int end); //making a vector with the numbers of node, it is a way from start to end
+	double getWayLength(); //returns the value of length from start to end
 };
