@@ -17,11 +17,21 @@ int main()
 
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
-	Algorithm a(0, 9, graph, &A_previousNode, &A_wayValue);
+	Algorithm a(1, 9, graph, &A_previousNode, &A_wayValue);
 	a.aStar();
 
 	std::vector<int> B_previousNode(f.getNodesAmount());
 	std::vector<double> B_wayValue(f.getNodesAmount());
 	Algorithm b(0, 9, graph, &B_previousNode, &B_wayValue);
-	b.Dijkstra();
+	//b.Dijkstra();
+
+	std::cout <<A_previousNode[9] <<std::endl;
+	std::cout << A_wayValue[9] << std::endl;
+
+
+	std::cout<<std::endl;
+	for (int i = 0; i < 10; i++)
+		std::cout <<i<<". " <<A_previousNode[i] << std::endl;
+
+
 }

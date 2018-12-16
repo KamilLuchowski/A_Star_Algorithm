@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Algorithm.h"
 #include <iostream>
+#include <queue>
 
 Algorithm::Algorithm()
 {
@@ -22,6 +23,7 @@ Algorithm::Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *
 	previousNode = m_previousNode;
 	wayValue = m_wayValue;
 	wayValue->assign(g.getNodesAmount(), DBL_MAX); //making vector with nodesAmount positions, all values set as DBL_MAX
+	previousNode->assign(g.getNodesAmount(), INT_MAX);
 
 	/*
 	std::cout << "Start "<<start <<std::endl;
@@ -35,28 +37,34 @@ Algorithm::Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *
 
 void Algorithm::aStar() //make a priority_queue
 {
+	std::priority_queue<QueueValue, std::vector<QueueValue>, std::greater<QueueValue>> p_queue;
+
 	//add the start node to queue
+	p_queue.emplace(0, start);
 
 	previousNode->at(start) = start; //
 	wayValue->at(start) = 0;
 
-	//while (if there is any nodes in queue) {
-	int current = 0; //take a node from the queue and set it as current
+	while (!p_queue.empty()) {
 
-		if (current == end) {
-			//found, leave this method;
+		int currentNode = p_queue.top().second;//take a node from the queue and set it as current
+		p_queue.pop();
+
+		if (currentNode == end) {
+			break;//end node found, leave this method;
 		}
 
-		for (int next : g.getDirectConnections(current)) { //next is a number of every node that is in direct connection to the current node
-			double newVal = wayValue->at(current) + g.nodeDistance(current, next); //newVal = the shortest length to the current node + length form current node to the next node
+		for (int next : g.getDirectConnections(currentNode)) { //next is a number of every node that is in direct connection to the current node
+			double newVal = wayValue->at(currentNode) + g.nodeDistance(currentNode, next); //newVal = the shortest length to the current node + length form current node to the next node
 
 			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal;
 
-				double toQueue = newVal + g.nodeDistance(next, end); 
-				//put next, toQueue  to priority_queue
-				previousNode->at(next) = current;
+				double toQueue = newVal +g.nodeDistance(next, end);
+				p_queue.emplace(toQueue, next);//put next, toQueue  to priority_queue
+
+				previousNode->at(next) = currentNode;
 			}
 		}
-	//}
+	}
 }

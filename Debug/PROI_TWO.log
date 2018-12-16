@@ -1,3 +1,4 @@
-﻿  main.cpp
-c:\users\kamil\desktop\proi_two\main.cpp(21): error C2440: "delete": nie można konwertować z "Algorithm" na "void*"
-  c:\users\kamil\desktop\proi_two\main.cpp(21): note: Nie jest dostępny żaden operator konwersji zdefiniowany przez użytkownika, który mógłby wykonać tę konwersję lub operator nie może zostać wywołany
+﻿  Algorithm.cpp
+  main.cpp
+  Generowanie kodu...
+  PROI_TWO.vcxproj -> C:\Users\Kamil\Desktop\PROI_TWO\Debug\PROI_TWO.exe
