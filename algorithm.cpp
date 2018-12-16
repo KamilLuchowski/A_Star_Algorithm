@@ -26,7 +26,7 @@ Algorithm::Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *
 	previousNode->assign(g.getNodesAmount(), INT_MAX);
 }
 
-void Algorithm::aStar() //make a priority_queue
+void Algorithm::aStar()
 {
 	std::priority_queue<QueueValue, std::vector<QueueValue>, std::greater<QueueValue>> p_queue; 
 

@@ -48,12 +48,13 @@ template<class Type>
 inline void Graph<Type>::printGraph() //to delete??
 {
 	for (Type next : nodes) {
-		std::cout << next.getNr() << std::endl;
+		std::cout << next.getNr() <<" - ";
+		for (int next1 : getDirectConnections(next.getNr())) {
+			std::cout << next1 << " ";
+		}
+		std::cout << std::endl;
 	}
 
-	for (int next: getDirectConnections(3)) {
-		std::cout << next << std::endl;
-	}
 }
 
 template<class Type>

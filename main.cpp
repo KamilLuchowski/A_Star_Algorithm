@@ -4,7 +4,7 @@
 #include "Node.h"
 #include "File.h"
 #include "Algorithm.h"
-
+#include "Test.h"
 
 int main()
 {
@@ -18,7 +18,6 @@ int main()
 	f.loadData();
 	Graph<Node> graph;
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
-	graph.printGraph();
 
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
@@ -33,5 +32,9 @@ int main()
 	std::vector<int> *A_vec = a.buildTheWay(start, end);
 	std::vector<int> *B_vec = b.buildTheWay(start, end);
 	f.saveData(a.getWayLength(), b.getWayLength(), A_vec, B_vec, &A_previousNode, &A_wayValue, &B_previousNode, &B_wayValue);
+
+	//graph.printGraph();
+	Test t;
+	t.testAll();
 }
 
