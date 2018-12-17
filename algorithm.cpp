@@ -36,7 +36,7 @@ void Algorithm::aStar()
 	wayValue->at(start) = 0;
 	int currentNode;
 
-	while (!p_queue.empty()) {
+	while (p_queue.empty()==0) {
 
 		currentNode = p_queue.top().second;//take a node from the queue and set it as current
 		p_queue.pop(); //take a node with the lowest (current way + predicted way)
@@ -53,8 +53,8 @@ void Algorithm::aStar()
 
 				double toQueue = newVal + g.nodeDistance(next, end); //newValue + heuristic
 				//g.nodeDistance(next, end) - heuristic function
-				p_queue.emplace(toQueue, next);//put toQueue, next, to priority_queue
 				previousNode->at(next) = currentNode; //save current node as "the best predecessor" on the way to the "next" node
+				p_queue.emplace(toQueue, next);//put toQueue, next, to priority_queue
 			}
 		}
 	}
@@ -72,7 +72,7 @@ void Algorithm::Dijkstra()
 	wayValue->at(start) = 0;
 	int currentNode;
 
-	while (!p_queue.empty()) {
+	while (p_queue.empty()==0) {
 
 		currentNode = p_queue.top().second;//take a node from the queue and set it as current
 		p_queue.pop(); //take a node with the lowest (current way + predicted way)
@@ -86,8 +86,8 @@ void Algorithm::Dijkstra()
 
 			if (wayValue->at(next) == DBL_MAX || newVal < wayValue->at(next)) { //if we haven't visited "next" node, or we found a shorter way to it
 				wayValue->at(next) = newVal;
-				p_queue.emplace(newVal, next);//put newVal, next, to priority_queue
 				previousNode->at(next) = currentNode; //save current node as "the best predecessor" on the way to the "next" node
+				p_queue.emplace(newVal, next);//put newVal, next, to priority_queue
 			}
 		}
 	}
