@@ -26,7 +26,7 @@ Algorithm::Algorithm(int m_start, int m_end, Graph<Node> m_g, std::vector<int> *
 	previousNode->assign(g.getNodesAmount(), INT_MAX);
 }
 
-void Algorithm::aStar()
+int Algorithm::aStar()
 {
 	std::priority_queue<QueueValue, std::vector<QueueValue>, std::greater<QueueValue>> p_queue; 
 
@@ -42,7 +42,7 @@ void Algorithm::aStar()
 		p_queue.pop(); //take a node with the lowest (current way + predicted way)
 
 		if (currentNode == end) {
-			break;//end node found, leave this method;
+			return 0;//end node found, leave this method;
 		}
 
 		for (int next : g.getDirectConnections(currentNode)) { //next is a number of every node that is in direct connection to the current node
@@ -58,11 +58,11 @@ void Algorithm::aStar()
 			}
 		}
 	}
-	if (currentNode != end) //no connection
-		exit(1);
+	//no connection
+	return 1;
 }
 
-void Algorithm::Dijkstra()
+int Algorithm::Dijkstra()
 {
 	std::priority_queue<QueueValue, std::vector<QueueValue>, std::greater<QueueValue>> p_queue;
 
@@ -78,7 +78,7 @@ void Algorithm::Dijkstra()
 		p_queue.pop(); //take a node with the lowest (current way + predicted way)
 
 		if (currentNode == end) {
-			break;//end node found, leave this method;
+			return 0;//end node found, leave this method;
 		}
 
 		for (int next : g.getDirectConnections(currentNode)) { //next is a number of every node that is in direct connection to the current node
@@ -91,8 +91,8 @@ void Algorithm::Dijkstra()
 			}
 		}
 	}
-	if (currentNode != end) //no connection
-		exit(1);
+	 //no connection
+	return 1;
 }
 
 std::vector<int>* Algorithm::buildTheWay(int start, int end)

@@ -23,12 +23,16 @@ int main()
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
 	Algorithm a(start, end, graph, &A_previousNode, &A_wayValue);
-	a.aStar();
+	int error = a.aStar();
+	if (error)
+		exit(1);
 	//vectors for Dijkstra tests
 	std::vector<int> B_previousNode(f.getNodesAmount());
 	std::vector<double> B_wayValue(f.getNodesAmount());
 	Algorithm b(start, end, graph, &B_previousNode, &B_wayValue);
-	b.Dijkstra();
+	error = b.Dijkstra();
+	if (error)
+		exit(1);
 
 	//vectors storing results- found way from start to end node
 	std::vector<int> *A_vec = a.buildTheWay(start, end);
