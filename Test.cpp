@@ -16,7 +16,8 @@ void Test::testAll()
 {
 	f.loadData();
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
-
+	
+	std::cout << "Direct connections: " << std::endl;
 	printGraph();
 
 	std::vector<int> A_previousNode(f.getNodesAmount());
@@ -44,6 +45,7 @@ void Test::testAll()
 		std::cout << next << " ";
 	std::cout << std::endl;
 
+	std::cout <<"Euclidean distance from 0 to 9: "<< graph.nodeDistance(0, 9) << std::endl;
 }
 
 void Test::printGraph()

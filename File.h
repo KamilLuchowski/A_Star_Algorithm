@@ -20,5 +20,6 @@ public:
 	std::vector<Node>getNodes();
 	std::vector<std::vector<int> >getConnections();
 	int getNodesAmount();
+	void loadNodesNr(int *a, int *b);
 };
 

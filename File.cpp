@@ -100,3 +100,11 @@ int File::getNodesAmount()
 	return NodesAmount;
 }
 
+void File::loadNodesNr(int *a, int * b)
+{
+	std::cout << "Enter start node nr: ";
+	std::cin >> *a;
+	std::cout << "Enter end node nr: ";
+	std::cin >> *b;
+}
+

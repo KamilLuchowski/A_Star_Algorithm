@@ -9,12 +9,9 @@
 int main()
 {
 	int start, end;
-	std::cout << "Enter start node nr: ";
-	std::cin >> start;
-	std::cout << "Enter end node nr: ";
-	std::cin >> end;
 
 	File f;
+	f.loadNodesNr(&start, &end);
 	f.loadData();
 	Graph<Node> graph;
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
