@@ -14,6 +14,9 @@ Test::~Test()
 
 void Test::testAll()
 {
+	std::cout << "Kamil Luchowski 2018" << std::endl;
+	std::cout << "AStar and Dijkstra search algorithms on directed graph" << std::endl;
+
 	f.loadData();
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
 	

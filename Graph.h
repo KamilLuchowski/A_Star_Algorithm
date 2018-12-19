@@ -14,11 +14,11 @@ private:
 public:
 	Graph();
 	~Graph();
-	void setGraph(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr); //
+	void setGraph(std::vector<Type>m_nodes, std::vector<std::vector<int> > m_connections, int nodesNr);
+	std::vector<Type>*getNodes();
 	std::vector<int> getDirectConnections(int node); //returns a vector to n-node direct connections
 	double nodeDistance(int a, int b); //return a distance between node nr a and node nr b
 	int getNodesAmount();
-	std::vector<Type>*getNodes();
 };
 
 template<class Type>

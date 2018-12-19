@@ -16,14 +16,14 @@ int main()
 	Graph<Node> graph;
 	graph.setGraph(f.getNodes(), f.getConnections(), f.getNodesAmount());
 
-	//vectors for AStar tests
+	//vectors for AStar manual tests
 	std::vector<int> A_previousNode(f.getNodesAmount());
 	std::vector<double> A_wayValue(f.getNodesAmount());
 	Algorithm a(start, end, graph, &A_previousNode, &A_wayValue);
 	int error = a.aStar();
 	if (error)
 		exit(1);
-	//vectors for Dijkstra tests
+	//vectors for Dijkstra manual tests
 	std::vector<int> B_previousNode(f.getNodesAmount());
 	std::vector<double> B_wayValue(f.getNodesAmount());
 	Algorithm b(start, end, graph, &B_previousNode, &B_wayValue);
@@ -37,7 +37,7 @@ int main()
 	//saving to file
 	f.saveData(a.getWayLength(), b.getWayLength(), A_vec, B_vec, &A_previousNode, &A_wayValue, &B_previousNode, &B_wayValue);
 
-	//tests displayed on a console
+	//auto tests displayed on a console
 	Test t;
 	t.testAll();
 }
